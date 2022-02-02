@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "dfa068fb-2f79-4683-bc51-c52f776fe31d",
+		"name": "GraphQL Django",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Actualizar Personaje",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation{\r\n    addPeople(input: {id: \"UGVvcGxlTm9kZToxMDc=\", homeWorldId: 1, name: \"Ramon\", hairColor:\"brown\", gender:HERMAPHRODITE}){\r\n        people{\r\n            hairColor,\r\n            gender,\r\n            name\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{url}}/graphql/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Personajes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    allPeople(name_Icontains: \"Luke\", gender: \"male\"){\r\n        edges {\r\n            node {\r\n                name,\r\n                id, \r\n                gender,\r\n                hairColor\r\n            }\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{url}}/graphql/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Planetas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation{\r\n    addPlanet(input: {name:\"Pluton\"}){\r\n        planet{\r\n            name\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{url}}/graphql/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Planetas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    allPlanets(name: \"Pluton\"){\r\n        edges {\r\n            node {\r\n                name\r\n            }\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{url}}/graphql/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Personaje",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation{\r\n    addPeople(input:{name: \"Renato\", gender: MALE, height: \"189\", mass: \"89\", hairColor: \"red\", eyeColor: \"black\", skinColor: \"white\", birthYear: \"5ABY\", homeWorldId: 32}){\r\n        people{\r\n            id,\r\n            name,\r\n            gender,\r\n            height,\r\n            mass,\r\n            hairColor,\r\n            eyeColor,\r\n            skinColor,\r\n            birthYear\r\n            homeWorld{\r\n                name,\r\n            }\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{url}}/graphql/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Film",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\r\n    addFilm(input:{director: \"RGlyZWN0b3JOb2RlOjE=\", \r\n    producer: [{id:\"UHJvZHVjZXJOb2RlOjE=\", name:\"Gary Kurtz\"}], character: [{id:\"UGVvcGxlTm9kZTox\", name: \"Luke Skywalker\"}], \r\n    releaseDate:\"1999-12-01\", episodeId:4, title:\"No Dune\", openingCrawl:\"A long time ago in a galaxy far, far away....\"}){\r\n        film{\r\n            title,\r\n            openingCrawl,\r\n            episodeId,\r\n            releaseDate,\r\n            director{\r\n                name\r\n            },\r\n            director{\r\n                name\r\n            }\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{url}}/graphql/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Productores",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    allProducers{\r\n        edges {\r\n            node {\r\n                name,\r\n                id\r\n            }\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{url}}/graphql/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Directores",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    allDirectors{\r\n        edges {\r\n            node {\r\n                name,\r\n                id\r\n            }\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{url}}/graphql/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

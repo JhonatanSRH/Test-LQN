@@ -12,7 +12,7 @@
 
 Clone the project
 ```
-git clone https://github.com/gustav0/swapi.git
+git clone https://github.com//swapi.git
 ```
 
 Move into de repo and install dependencies
@@ -43,18 +43,14 @@ python manage.py runserver
 python manage.py test
 ```
 
-## Extras
-Agregué un collection de postman dentro del directorio `extra` del repositorio, el cual contiene todos los request ya armados para hacer pruebas (le quité todas las variables del environment para que no tengan que crear nada, si se me pasó alguna me disculpo).
+### Pruebas en servidor web
 
-## Notas
-(Perdón por el spanglish.)
-1. Creo que cumplí con todas las consideraciones, pero tengo una observación con los unittests:
- - Solo realicé tests para `People` por temas de tiempo.
- - Utilicé un id fijo en el código para verificar la respuesta de creación y realizar la prueba de update. (Aún no estoy seguro cómo funcionan los ids generados por graphene-django por lo que es posible que no funcionen los unittest en otro ambiente diferente al mío).
- - En caso de que falle el comando para tests muy probablemente la causa sea lo que menciono en el punto anterior. El offending code sería este id: `UGVvcGxlTm9kZTo4OQ==` en `app/tests.py`
-2. No alcancé a implementar sistemas de autenticación. Sin embargo he utilizado diferentes librebrías que abarcan varios casos de uso como:
- - [Django OAuth Toolkit](https://github.com/jazzband/django-oauth-toolkit) - Para trabajar con proveedores externos.
- - [Simple JWT](https://github.com/SimpleJWT/django-rest-framework-simplejwt) - Para trabajar con credenciales de usuarios.
- - O simplemente usar BasicAuth o SessionAuth de Django.
- 3. Con respecto a documentación especifica para GraphQL honestamente les digo que no tengo ni la menor idea de cuales son los estándares ni la forma apropiada de generar, organizar y mantener la documentación. Pero trabajo continuamente con swagger siguiendo el OpenAPI en proyectos con API Rest.
- 4. Con respecto a "Testing avanzado" imagino que se refieren a librerías especializadas en testing como [pytest](https://github.com/pytest-dev/pytest/), análisis de covertura de código, e implementación de CI. Podría hacer algo pero no tengo suficiente base ni experiencia en testing de GraphQL como para decidir que librería se adapta mejor ni creer que la covertura sería asertada y un CI sería overkill.
+Esta es la ruta para acceder al servidor web desplegado
+```
+https://build-graphql.uw.r.appspot.com
+```
+
+La coleccion de servicios esta en la carpeta extra, es recomendable hacer las peticiones desde postman o parecidos
+
+La parte uno del test se encuentra en la carpeta 'Parte1'
+No se implemento Pytest y el dockerfile tuvo problemas con los paquetes, el resto de puntos fueron desarrollados

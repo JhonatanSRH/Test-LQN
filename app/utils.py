@@ -1,14 +1,19 @@
-def generic_model_mutation_process(model, data, id=None, commit=True):
-    """
-    Crea y actualiza objetos en base a un model y un id.
-    No tiene ningún tipo de restricción.
 
-    :param model: Model de Django:.
-    :param data: Dict con los fields para el objeto a creat/actualizar.
-    :param id: Int para buscar el objeto a actualizar
-    :param commit: Indica si se debe guardar el objeto.
-    :return: model instance.
+def generic_model_mutation_process(model, data, id=None, commit=True):
+    """Crea y actualiza objetos en base a un model y un id.
+    No tiene ningún tipo de restricción.
+    Usado para el guardado de modelos en las mutaciones basicas.
+
+    Args:
+        model (Django.model):  Model de Django.
+        data (dict): Contiene los fields del objeto a creat/actualizar.
+        id (int, optional): Para buscar el objeto a actualizar. Por defecto tiene el valor None.
+        commit (bool, optional): Indica si se debe guardar el objeto. Por defecto tiene el valor True.
+
+    Returns:
+        Django.model: instancia del modelo entregado
     """
+    
     if id:
         item = model.objects.get(id=id)
         try:

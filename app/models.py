@@ -1,5 +1,6 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
+from enum import Enum
 
 
 class SimpleNameModel(models.Model):
@@ -27,17 +28,49 @@ class Planet(TimeStampedModel, SimpleNameModel):
     class Meta:
         db_table = 'planet'
 
+class GenderEnum(Enum):
+    """ Opciones de genero para los Personajes """
+    MALE = 'male'
+    FEMALE = 'female'
+    HERMAPHRODITE = 'hermaphrodite'
+    NA = 'n/a'
 
+    @classmethod
+    def choices(cls):
+        return tuple((x, x) for x in cls)
 class People(TimeStampedModel, SimpleNameModel):
     """ Personajes del universo de Star Wars """
-
+    
+    HAIR_OPTIONS = [
+        ('black', 'black'), 
+        ('brown', 'brown'), 
+        ('blond', 'blonde'), 
+        ('red', 'red'), 
+        ('white', 'white'), 
+        ('bald', 'bald')
+    ]
+    EYE_OPTIONS = [
+        ('black', 'black'), 
+        ('brown', 'brown'), 
+        ('yellow', 'YELLOW'), 
+        ('red', 'red'), 
+        ('green', 'green'), 
+        ('purple', 'purple'), 
+        ('unknown', 'unknown')
+    ]
+    # GENDER_OPTIONS = [
+    #     ('male', 'MALE'), 
+    #     ('female', 'FEMALE'), 
+    #     ('hermaphrodite', 'HERMAPHRODITE'), 
+    #     ('n/a', 'NA')
+    # ]
     height = models.CharField(max_length=16, blank=True)
     mass = models.CharField(max_length=16, blank=True)
-    hair_color = models.CharField(max_length=32, blank=True)
+    hair_color = models.CharField(max_length=32, blank=True, choices=HAIR_OPTIONS)
     skin_color = models.CharField(max_length=32, blank=True)
-    eye_color = models.CharField(max_length=32, blank=True)
+    eye_color = models.CharField(max_length=32, blank=True, choices=EYE_OPTIONS)
     birth_year = models.CharField(max_length=16, blank=True)
-    gender = models.CharField(max_length=64, blank=True)
+    gender = models.CharField(max_length=64, blank=True, choices=GenderEnum.choices())
     home_world = models.ForeignKey(Planet, on_delete=models.CASCADE, related_name='inhabitants')
 
     class Meta:
